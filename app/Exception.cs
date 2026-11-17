@@ -7,7 +7,7 @@ namespace App
     public class NotFoundInEnums : Exception
     {
         public NotFoundInEnums(string type)
-            : base($"Unknown {type} in Type  ")
+            : base($"Unknown {type} in Type")
         {
         }
     }

@@ -1,8 +1,9 @@
 using System.Collections.Generic;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
-public static class HashalahService
+public  class HashalahService
 {
-    public static HashalahFile CreateFile(int reportDay, List<string[]> rows)
+    public  HashalahFile EnteringDataIntoTheModel(int reportDay, List<string[]> rows)
     {
         HashalahFile file = new HashalahFile(reportDay);
 
@@ -10,7 +11,6 @@ public static class HashalahService
         {
             file.Hashalahs.Add(new HashalahFile.Hashalah(row));
         }
-
         return file;
     }
 }

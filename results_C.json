@@ -1,0 +1,186 @@
+{
+ "kind": "placement-results",
+ "version": 1,
+ "mode": "C",
+ "lang": "csharp",
+ "created": "2026-11-17T17:21:26",
+ "created_epoch": 1794928886106,
+ "at": null,
+ "build": {
+  "ok": false,
+  "output": "C:\\Users\\8945\\Downloads\\exam\\app\\Services\\Pipeline.cs(7,37): error CS0712: Cannot create an instance of the static class 'HashalahService' [C:\\Users\\8945\\Downloads\\exam\\app\\app.csproj]\n\nBuild FAILED.\n    0 Warning(s)\n    1 Error(s)\n\nTime Elapsed 00:00:02.27",
+  "ms": 2520
+ },
+ "runs": [],
+ "sample_run": null,
+ "warnings": [
+  "build_failed"
+ ],
+ "files": [
+  {
+   "path": "app/Exception.cs",
+   "lines": 14,
+   "classes": [
+    "NotFoundInEnums"
+   ],
+   "functions": [
+    {
+     "name": "NotFoundInEnums",
+     "lines": 2
+    }
+   ],
+   "type_ifs": 0
+  },
+  {
+   "path": "app/Models/Enums.cs",
+   "lines": 8,
+   "classes": [
+    "Type"
+   ],
+   "functions": [],
+   "type_ifs": 0
+  },
+  {
+   "path": "app/Models/FineFile.cs",
+   "lines": 20,
+   "classes": [
+    "FineFile",
+    "Fine"
+   ],
+   "functions": [],
+   "type_ifs": 0
+  },
+  {
+   "path": "app/Models/HashalahFile.cs",
+   "lines": 45,
+   "classes": [
+    "HashalahFile",
+    "Hashalah"
+   ],
+   "functions": [
+    {
+     "name": "Hashalah",
+     "lines": 22
+    },
+    {
+     "name": "HashalahFile",
+     "lines": 5
+    }
+   ],
+   "type_ifs": 3
+  },
+  {
+   "path": "app/Program.cs",
+   "lines": 56,
+   "classes": [
+    "Program"
+   ],
+   "functions": [
+    {
+     "name": "Main",
+     "lines": 13
+    },
+    {
+     "name": "ReadReportDay",
+     "lines": 4
+    },
+    {
+     "name": "ReadRows",
+     "lines": 12
+    },
+    {
+     "name": "FindSample",
+     "lines": 11
+    }
+   ],
+   "type_ifs": 0
+  },
+  {
+   "path": "app/Services/CheckingFines.cs",
+   "lines": 92,
+   "classes": [
+    "CheckingFines"
+   ],
+   "functions": [
+    {
+     "name": "Check",
+     "lines": 27
+    },
+    {
+     "name": "CalculateStudentFine",
+     "lines": 9
+    },
+    {
+     "name": "AddStudentFine",
+     "lines": 6
+    },
+    {
+     "name": "CheckTeacher",
+     "lines": 14
+    },
+    {
+     "name": "AddGuestFine",
+     "lines": 5
+    },
+    {
+     "name": "CalculateGuestFine",
+     "lines": 9
+    },
+    {
+     "name": "AddFineRecord",
+     "lines": 11
+    }
+   ],
+   "type_ifs": 0
+  },
+  {
+   "path": "app/Services/HashalahService.cs",
+   "lines": 16,
+   "classes": [
+    "HashalahService"
+   ],
+   "functions": [
+    {
+     "name": "CreateFile",
+     "lines": 11
+    }
+   ],
+   "type_ifs": 0
+  },
+  {
+   "path": "app/Services/Pipeline.cs",
+   "lines": 14,
+   "classes": [
+    "Pipeline"
+   ],
+   "functions": [
+    {
+     "name": "Run",
+     "lines": 9
+    }
+   ],
+   "type_ifs": 0
+  },
+  {
+   "path": "app/Services/PrintResults.cs",
+   "lines": 32,
+   "classes": [
+    "PrintResults"
+   ],
+   "functions": [
+    {
+     "name": "PrintReport",
+     "lines": 27
+    }
+   ],
+   "type_ifs": 0
+  }
+ ],
+ "git": {
+  "available": true,
+  "commit": "3a9854b",
+  "note": "nothing new to commit",
+  "log": "8bc8e64|2026-11-17 13:46:23 +0200|start\n82b4fbf|2026-11-17 16:17:20 +0200|Add models and gitignore\nd516a13|2026-11-17 17:13:15 +0200|level 1\n3a9854b|2026-11-17 17:20:49 +0200|level 3",
+  "numstat": "commit|8bc8e64|start\n\n7\t0\t.gitignore\n55\t0\tapp/Program.cs\n11\t0\tapp/app.csproj\n449\t0\tcheck/run_checks.py\n8\t0\tdata/sample.txt\ncommit|82b4fbf|Add models and gitignore\n\n5\t0\tapp/.gitignore\n9\t0\tapp/Models/Enums.cs\n6\t0\tapp/Models/FineFile.cs\n35\t0\tapp/Models/HashalahFile.cs\ncommit|d516a13|level 1\n\n14\t0\tapp/Exception.cs\n2\t3\tapp/Models/Enums.cs\n15\t1\tapp/Models/FineFile.cs\n21\t11\tapp/Models/HashalahFile.cs\n3\t0\tapp/Program.cs\n65\t0\tapp/Services/CheckingFines.cs\n16\t0\tapp/Services/HashalahService.cs\n14\t0\tapp/Services/PrintResults.cs\ncommit|3a9854b|level 3\n\n1\t3\tapp/Program.cs\n40\t13\tapp/Services/CheckingFines.cs\n14\t0\tapp/Services/Pipeline.cs\n19\t1\tapp/Services/PrintResults.cs"
+ }
+}
