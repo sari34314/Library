@@ -1,4 +1,4 @@
-﻿using System;
+﻿using App;
 using System.Collections.Generic;
 
 public class HashalahFile
@@ -13,18 +13,28 @@ public class HashalahFile
         public string book;
         public int loan_day;
         public int return_day;
-        //public Hashalah(string reader_id, string name, Type type, string book, int loan_day, int return_day)
-        //{
-        //    this.reader_id = reader_id;
-        //    this.name = name;
-        //    this.type = type;
-        //    this.book = book;
-        //    this.loan_day = loan_day;
-        //    this.return_day = return_day;
-        //}
+
         public Hashalah(string[] data)
         {
-            
+            reader_id = data[0];
+            name = data[1];
+            switch (data[2])
+            {
+                case "student":
+                    type = Type.student;
+                    break;
+                case "teacher":
+                    type = Type.teacher;
+                    break;
+                case "guest":
+                    type = Type.guest;
+                    break;
+                default:
+                    throw new App.NotFoundInEnums(data[2]);
+            }
+            book = data[3];
+            loan_day = int.Parse(data[4]);
+            return_day = string.IsNullOrWhiteSpace(data[5]) ? 0 : int.Parse(data[5]);
         }
     }
     public HashalahFile(int report_day) 

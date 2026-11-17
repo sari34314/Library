@@ -16,6 +16,9 @@ class Program
         string[] lines = File.ReadAllLines(path, Encoding.UTF8);
         int reportDay = ReadReportDay(lines);
         List<string[]> rows = ReadRows(lines);
+        HashalahFile hashalahFile = new HashalahService().EnteringDataIntoTheModel(reportDay, rows);
+        FineFile fineFile = new CheckingFines().Check(hashalahFile);
+        new PrintResults().PrintFines(fineFile);
         Console.Error.WriteLine("skeleton ok: read " + Path.GetFileName(path) + " - report day " + reportDay + " - " + rows.Count + " rows");
 
         // Write your code here. 'reportDay' and 'rows' are ready.
