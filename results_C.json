@@ -1,0 +1,211 @@
+{
+ "kind": "placement-results",
+ "version": 1,
+ "mode": "C",
+ "lang": "csharp",
+ "created": "2026-11-17T17:23:56",
+ "created_epoch": 1794929036558,
+ "at": null,
+ "build": {
+  "ok": true,
+  "output": "Build succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.02",
+  "ms": 1241
+ },
+ "runs": [
+  {
+   "file": "check1a.txt",
+   "exit": 0,
+   "timed_out": false,
+   "ms": 47,
+   "stdout": "FINES\r\nreader_id,name,fine\r\n101,צביה לוין,6\r\n102,תהילה כץ,0\r\n107,יעל אדלר,8\r\n103,שירה גבאי,0\r\n104,דינה שטרן,2\r\n112,בינה קליין,2\r\n105,הדסה וולף,30\r\n113,זהבה אורן,30\r\n106,חנה רוזן,6\r\n121,גאולה חדד,6\r\n108,טובה מזרחי,100\r\n109,רבקה פישר,0\r\n112,בינה קליין,6\r\n110,פנינה עזרא,0\r\n121,גאולה חדד,6\r\n111,נחמה ברגר,0\r\n114,מיכל דהן,4\r\n113,זהבה אורן,30\r\n115,אורית שמש,4\r\n121,גאולה חדד,6\r\nFLAGGED\r\nreader_id,name\r\n110,פנינה עזרא\r\nERRORS\r\nTOTAL,246\r\n",
+   "stderr_tail": "skeleton ok: read check1a.txt - report day 150 - 20 rows",
+   "decode_problem": false
+  },
+  {
+   "file": "check1b.txt",
+   "exit": 3762504530,
+   "timed_out": false,
+   "ms": 2051,
+   "stdout": "",
+   "stderr_tail": "Unhandled exception. System.IndexOutOfRangeException: Index was outside the bounds of the array.\n   at HashalahFile.Hashalah..ctor(String[] data) in C:\\Users\\8945\\Downloads\\exam\\app\\Models\\HashalahFile.cs:line 37\n   at HashalahService.EnteringDataIntoTheModel(Int32 reportDay, List`1 rows) in C:\\Users\\8945\\Downloads\\exam\\app\\Services\\HashalahService.cs:line 12\n   at Pipeline.Run(Int32 reportDay, List`1 rows) in C:\\Users\\8945\\Downloads\\exam\\app\\Services\\Pipeline.cs:line 7\n   at Program.Main(String[] args) in C:\\Users\\8945\\Downloads\\exam\\app\\Program.cs:line 19",
+   "decode_problem": false
+  }
+ ],
+ "sample_run": {
+  "file": "sample.txt",
+  "exit": 0,
+  "timed_out": false,
+  "ms": 52,
+  "stdout": "FINES\r\nreader_id,name,fine\r\n11,רחל כהן,0\r\n12,מרים לוי,30\r\n21,שרה גולד,0\r\n31,לאה רוזן,8\r\n13,דינה אבן,0\r\n11,רחל כהן,2\r\nFLAGGED\r\nreader_id,name\r\n21,שרה גולד\r\nERRORS\r\nTOTAL,40\r\n",
+  "stderr_tail": "skeleton ok: read sample.txt - report day 120 - 6 rows",
+  "decode_problem": false
+ },
+ "warnings": [],
+ "files": [
+  {
+   "path": "app/Exception.cs",
+   "lines": 14,
+   "classes": [
+    "NotFoundInEnums"
+   ],
+   "functions": [
+    {
+     "name": "NotFoundInEnums",
+     "lines": 2
+    }
+   ],
+   "type_ifs": 0
+  },
+  {
+   "path": "app/Models/Enums.cs",
+   "lines": 8,
+   "classes": [
+    "Type"
+   ],
+   "functions": [],
+   "type_ifs": 0
+  },
+  {
+   "path": "app/Models/FineFile.cs",
+   "lines": 20,
+   "classes": [
+    "FineFile",
+    "Fine"
+   ],
+   "functions": [],
+   "type_ifs": 0
+  },
+  {
+   "path": "app/Models/HashalahFile.cs",
+   "lines": 45,
+   "classes": [
+    "HashalahFile",
+    "Hashalah"
+   ],
+   "functions": [
+    {
+     "name": "Hashalah",
+     "lines": 22
+    },
+    {
+     "name": "HashalahFile",
+     "lines": 5
+    }
+   ],
+   "type_ifs": 3
+  },
+  {
+   "path": "app/Program.cs",
+   "lines": 56,
+   "classes": [
+    "Program"
+   ],
+   "functions": [
+    {
+     "name": "Main",
+     "lines": 13
+    },
+    {
+     "name": "ReadReportDay",
+     "lines": 4
+    },
+    {
+     "name": "ReadRows",
+     "lines": 12
+    },
+    {
+     "name": "FindSample",
+     "lines": 11
+    }
+   ],
+   "type_ifs": 0
+  },
+  {
+   "path": "app/Services/CheckingFines.cs",
+   "lines": 92,
+   "classes": [
+    "CheckingFines"
+   ],
+   "functions": [
+    {
+     "name": "Check",
+     "lines": 27
+    },
+    {
+     "name": "CalculateStudentFine",
+     "lines": 9
+    },
+    {
+     "name": "AddStudentFine",
+     "lines": 6
+    },
+    {
+     "name": "CheckTeacher",
+     "lines": 14
+    },
+    {
+     "name": "AddGuestFine",
+     "lines": 5
+    },
+    {
+     "name": "CalculateGuestFine",
+     "lines": 9
+    },
+    {
+     "name": "AddFineRecord",
+     "lines": 11
+    }
+   ],
+   "type_ifs": 0
+  },
+  {
+   "path": "app/Services/HashalahService.cs",
+   "lines": 16,
+   "classes": [
+    "HashalahService"
+   ],
+   "functions": [
+    {
+     "name": "EnteringDataIntoTheModel",
+     "lines": 10
+    }
+   ],
+   "type_ifs": 0
+  },
+  {
+   "path": "app/Services/Pipeline.cs",
+   "lines": 14,
+   "classes": [
+    "Pipeline"
+   ],
+   "functions": [
+    {
+     "name": "Run",
+     "lines": 9
+    }
+   ],
+   "type_ifs": 0
+  },
+  {
+   "path": "app/Services/PrintResults.cs",
+   "lines": 32,
+   "classes": [
+    "PrintResults"
+   ],
+   "functions": [
+    {
+     "name": "PrintReport",
+     "lines": 27
+    }
+   ],
+   "type_ifs": 0
+  }
+ ],
+ "git": {
+  "available": true,
+  "commit": "98fee70",
+  "note": "saved your work in a commit: \"before change\"",
+  "log": "8bc8e64|2026-11-17 13:46:23 +0200|start\n82b4fbf|2026-11-17 16:17:20 +0200|Add models and gitignore\nd516a13|2026-11-17 17:13:15 +0200|level 1\n3a9854b|2026-11-17 17:20:49 +0200|level 3\ncbb529e|2026-11-17 17:22:43 +0200|before change\n98fee70|2026-11-17 17:23:56 +0200|before change",
+  "numstat": "commit|8bc8e64|start\n\n7\t0\t.gitignore\n55\t0\tapp/Program.cs\n11\t0\tapp/app.csproj\n449\t0\tcheck/run_checks.py\n8\t0\tdata/sample.txt\ncommit|82b4fbf|Add models and gitignore\n\n5\t0\tapp/.gitignore\n9\t0\tapp/Models/Enums.cs\n6\t0\tapp/Models/FineFile.cs\n35\t0\tapp/Models/HashalahFile.cs\ncommit|d516a13|level 1\n\n14\t0\tapp/Exception.cs\n2\t3\tapp/Models/Enums.cs\n15\t1\tapp/Models/FineFile.cs\n21\t11\tapp/Models/HashalahFile.cs\n3\t0\tapp/Program.cs\n65\t0\tapp/Services/CheckingFines.cs\n16\t0\tapp/Services/HashalahService.cs\n14\t0\tapp/Services/PrintResults.cs\ncommit|3a9854b|level 3\n\n1\t3\tapp/Program.cs\n40\t13\tapp/Services/CheckingFines.cs\n14\t0\tapp/Services/Pipeline.cs\n19\t1\tapp/Services/PrintResults.cs\ncommit|cbb529e|before change\n\n1\t1\tapp/Exception.cs\n3\t3\tapp/Services/HashalahService.cs\n186\t0\tresults_C.json\ncommit|98fee70|before change\n\n0\t186\tresults_C.json"
+ }
+}
