@@ -1,0 +1,719 @@
+{
+ "format": "placement-exam-v1",
+ "variant": "v1-plus",
+ "setupOk": true,
+ "student": {
+  "name": "שרי גרינפלד",
+  "id": "216739243",
+  "lang": "C#",
+  "repo": ""
+ },
+ "t": {
+  "start": 1794916342941,
+  "aEnd": 1794919597999,
+  "bEnd": 1794920878505,
+  "cStart": 1794920878505,
+  "levels": {
+   "1": 1794928379505,
+   "2": 1794928794391
+  },
+  "hints": [],
+  "hintCards": [],
+  "run1Open": 1794928906701,
+  "run1Done": 1794929105645,
+  "dStart": 1794929105645,
+  "run2Open": 1794929218837,
+  "run2Done": 1794929306261,
+  "eEnd": 1794929996946,
+  "submitted": 1794930010946,
+  "templateAt": 1794915844058
+ },
+ "a": {
+  "summary": "מקבלת את קובץ ההשאלות.\nמחזירה דוח קנסות שבו: רשימה של כל הקוראות לפי הסדר עם כל הפרטים ועמודה נוספת של סכום לתשלום (סכום עגול),\nרשימה לבירור שמופיעות בה המורות שהשאילו ספר ולא החזירו ועברו יותר מ-60 ימים מההשאלה,\nרשימת שורות שגויות,\nסך כל הקנסות.",
+  "cases": [
+   {
+    "type": "student",
+    "loan": "50",
+    "ret": "100",
+    "kind": "fine",
+    "val": "30",
+    "why": ""
+   },
+   {
+    "type": "teacher",
+    "loan": "102",
+    "ret": "98",
+    "kind": "error",
+    "val": "",
+    "why": ""
+   },
+   {
+    "type": "guest",
+    "loan": "40",
+    "ret": "48",
+    "kind": "fine",
+    "val": "3",
+    "why": ""
+   },
+   {
+    "type": "teacher",
+    "loan": "40",
+    "ret": "",
+    "kind": "flag",
+    "val": "",
+    "why": ""
+   },
+   {
+    "type": "guest",
+    "loan": "20",
+    "ret": "30",
+    "kind": "fine",
+    "val": "8",
+    "why": ""
+   }
+  ],
+  "questions": [],
+  "opened": [
+   {
+    "id": 2,
+    "t": 1794917407954
+   },
+   {
+    "id": 5,
+    "t": 1794917488058
+   }
+  ],
+  "plan": [
+   {
+    "part": "Servises",
+    "does": "תיקייה לקריאת הקובץ-READFILE, תיקיית עיבוד נתונים-DOFINE, תיקיית הדפסה-PRINFINE"
+   },
+   {
+    "part": "READFILE",
+    "does": "קובץ שקורא את דף ההשאלות, ומעביר את הנתונים למודל HASHHALAFILE (לא יודעת איך אומרים באנגלית)"
+   },
+   {
+    "part": "DOFINE",
+    "does": "קובץ שמקבל מודל HASHHALAFILE  מחשב את הלוגיקה וממלא את המודל FINEFILE"
+   },
+   {
+    "part": "PDFFINE",
+    "does": "קובץ שמקבל את המודל FINEFILE ומדפיס PDF"
+   },
+   {
+    "part": "PIPELINE",
+    "does": "מקבלת את קובץ ההשאלות ומעבירה לפונקציה ()READFILE שבתיקיית READFILE את הפלט מעבירה לפונקציה ()DOFINE שבקובץ DOFINE ואת הפלט שלו מעבירה לפונקציה PRINTPDFFILE שבקובץ PDFFINE"
+   },
+   {
+    "part": "MAIN",
+    "does": "יש בה פונקציית VOID אחת שקוראת ל()DOFINEPDFFROMDOCH מהקובץ PIPELINE"
+   }
+  ],
+  "models": [
+   {
+    "name": "HASHALA",
+    "fields": "reader_id,name,type,book,loan_day,return_day"
+   },
+   {
+    "name": "HASHHALAFILE  ",
+    "fields": "<report_day, list<HASHALA  "
+   },
+   {
+    "name": "Fine",
+    "fields": "reader_id,name,אופציונלי-fine"
+   },
+   {
+    "name": "FINEFILE ",
+    "fields": " List<Fine> FINES List<Fine> FLAGGED List<String> ERRORS TOTAL"
+   }
+  ]
+ },
+ "b": {
+  "b1q1": "8",
+  "b1q2": "1,2 0",
+  "b2": {
+   "q1": "both",
+   "q2": "b",
+   "q3": "once",
+   "q4": "memory",
+   "text": ""
+  },
+  "b3": {
+   "marks": {
+    "5": "אין סיבה להגדיר total כ-double, כי בכל מקרה 10% יצא מספר שלם \nצריך לכתוב     int total = 0;",
+    "8": "בודק אם הגיל קטן מ12, בעוד בהנחיה כתוב בפרוש: ילדה עד גיל 12, כולל.\nצריך לכתוב         if (ages[i] <= 12)\n",
+    "14": "מחשב 10% הנחה לכרטיסי הילדות+ המבוגרות, בעוד ההנחיה בפרוש: רק על כרטיסי המבוגרות.\nצריך לכתוב:         total = adults  * 0.9;\n"
+   },
+   "unmarked": {
+    "4": "טטט"
+   },
+   "approve": "no",
+   "testAges": "11,12,13",
+   "testExp": "80"
+  }
+ },
+ "c": {
+  "codeBefore": "",
+  "out1a": "FINES\r\nreader_id,name,fine\r\n101,צביה לוין,6\r\n102,תהילה כץ,0\r\n107,יעל אדלר,8\r\n103,שירה גבאי,0\r\n104,דינה שטרן,2\r\n112,בינה קליין,2\r\n105,הדסה וולף,30\r\n113,זהבה אורן,30\r\n106,חנה רוזן,6\r\n121,גאולה חדד,6\r\n108,טובה מזרחי,100\r\n109,רבקה פישר,0\r\n112,בינה קליין,6\r\n110,פנינה עזרא,0\r\n121,גאולה חדד,6\r\n111,נחמה ברגר,0\r\n114,מיכל דהן,4\r\n113,זהבה אורן,30\r\n115,אורית שמש,4\r\n121,גאולה חדד,6\r\nFLAGGED\r\nreader_id,name\r\n110,פנינה עזרא\r\nERRORS\r\nTOTAL,246\r\n",
+  "out1b": "",
+  "via": "script",
+  "results": {
+   "kind": "placement-results",
+   "version": 1,
+   "mode": "C",
+   "lang": "csharp",
+   "created": "2026-11-17T17:23:56",
+   "created_epoch": 1794929036558,
+   "at": null,
+   "build": {
+    "ok": true,
+    "output": "Build succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.02",
+    "ms": 1241
+   },
+   "runs": [
+    {
+     "file": "check1a.txt",
+     "exit": 0,
+     "timed_out": false,
+     "ms": 47,
+     "stdout": "FINES\r\nreader_id,name,fine\r\n101,צביה לוין,6\r\n102,תהילה כץ,0\r\n107,יעל אדלר,8\r\n103,שירה גבאי,0\r\n104,דינה שטרן,2\r\n112,בינה קליין,2\r\n105,הדסה וולף,30\r\n113,זהבה אורן,30\r\n106,חנה רוזן,6\r\n121,גאולה חדד,6\r\n108,טובה מזרחי,100\r\n109,רבקה פישר,0\r\n112,בינה קליין,6\r\n110,פנינה עזרא,0\r\n121,גאולה חדד,6\r\n111,נחמה ברגר,0\r\n114,מיכל דהן,4\r\n113,זהבה אורן,30\r\n115,אורית שמש,4\r\n121,גאולה חדד,6\r\nFLAGGED\r\nreader_id,name\r\n110,פנינה עזרא\r\nERRORS\r\nTOTAL,246\r\n",
+     "stderr_tail": "skeleton ok: read check1a.txt - report day 150 - 20 rows",
+     "decode_problem": false
+    },
+    {
+     "file": "check1b.txt",
+     "exit": 3762504530,
+     "timed_out": false,
+     "ms": 2051,
+     "stdout": "",
+     "stderr_tail": "Unhandled exception. System.IndexOutOfRangeException: Index was outside the bounds of the array.\n   at HashalahFile.Hashalah..ctor(String[] data) in C:\\Users\\8945\\Downloads\\exam\\app\\Models\\HashalahFile.cs:line 37\n   at HashalahService.EnteringDataIntoTheModel(Int32 reportDay, List`1 rows) in C:\\Users\\8945\\Downloads\\exam\\app\\Services\\HashalahService.cs:line 12\n   at Pipeline.Run(Int32 reportDay, List`1 rows) in C:\\Users\\8945\\Downloads\\exam\\app\\Services\\Pipeline.cs:line 7\n   at Program.Main(String[] args) in C:\\Users\\8945\\Downloads\\exam\\app\\Program.cs:line 19",
+     "decode_problem": false
+    }
+   ],
+   "sample_run": {
+    "file": "sample.txt",
+    "exit": 0,
+    "timed_out": false,
+    "ms": 52,
+    "stdout": "FINES\r\nreader_id,name,fine\r\n11,רחל כהן,0\r\n12,מרים לוי,30\r\n21,שרה גולד,0\r\n31,לאה רוזן,8\r\n13,דינה אבן,0\r\n11,רחל כהן,2\r\nFLAGGED\r\nreader_id,name\r\n21,שרה גולד\r\nERRORS\r\nTOTAL,40\r\n",
+    "stderr_tail": "skeleton ok: read sample.txt - report day 120 - 6 rows",
+    "decode_problem": false
+   },
+   "warnings": [],
+   "files": [
+    {
+     "path": "app/Exception.cs",
+     "lines": 14,
+     "classes": [
+      "NotFoundInEnums"
+     ],
+     "functions": [
+      {
+       "name": "NotFoundInEnums",
+       "lines": 2
+      }
+     ],
+     "type_ifs": 0
+    },
+    {
+     "path": "app/Models/Enums.cs",
+     "lines": 8,
+     "classes": [
+      "Type"
+     ],
+     "functions": [],
+     "type_ifs": 0
+    },
+    {
+     "path": "app/Models/FineFile.cs",
+     "lines": 20,
+     "classes": [
+      "FineFile",
+      "Fine"
+     ],
+     "functions": [],
+     "type_ifs": 0
+    },
+    {
+     "path": "app/Models/HashalahFile.cs",
+     "lines": 45,
+     "classes": [
+      "HashalahFile",
+      "Hashalah"
+     ],
+     "functions": [
+      {
+       "name": "Hashalah",
+       "lines": 22
+      },
+      {
+       "name": "HashalahFile",
+       "lines": 5
+      }
+     ],
+     "type_ifs": 3
+    },
+    {
+     "path": "app/Program.cs",
+     "lines": 56,
+     "classes": [
+      "Program"
+     ],
+     "functions": [
+      {
+       "name": "Main",
+       "lines": 13
+      },
+      {
+       "name": "ReadReportDay",
+       "lines": 4
+      },
+      {
+       "name": "ReadRows",
+       "lines": 12
+      },
+      {
+       "name": "FindSample",
+       "lines": 11
+      }
+     ],
+     "type_ifs": 0
+    },
+    {
+     "path": "app/Services/CheckingFines.cs",
+     "lines": 92,
+     "classes": [
+      "CheckingFines"
+     ],
+     "functions": [
+      {
+       "name": "Check",
+       "lines": 27
+      },
+      {
+       "name": "CalculateStudentFine",
+       "lines": 9
+      },
+      {
+       "name": "AddStudentFine",
+       "lines": 6
+      },
+      {
+       "name": "CheckTeacher",
+       "lines": 14
+      },
+      {
+       "name": "AddGuestFine",
+       "lines": 5
+      },
+      {
+       "name": "CalculateGuestFine",
+       "lines": 9
+      },
+      {
+       "name": "AddFineRecord",
+       "lines": 11
+      }
+     ],
+     "type_ifs": 0
+    },
+    {
+     "path": "app/Services/HashalahService.cs",
+     "lines": 16,
+     "classes": [
+      "HashalahService"
+     ],
+     "functions": [
+      {
+       "name": "EnteringDataIntoTheModel",
+       "lines": 10
+      }
+     ],
+     "type_ifs": 0
+    },
+    {
+     "path": "app/Services/Pipeline.cs",
+     "lines": 14,
+     "classes": [
+      "Pipeline"
+     ],
+     "functions": [
+      {
+       "name": "Run",
+       "lines": 9
+      }
+     ],
+     "type_ifs": 0
+    },
+    {
+     "path": "app/Services/PrintResults.cs",
+     "lines": 32,
+     "classes": [
+      "PrintResults"
+     ],
+     "functions": [
+      {
+       "name": "PrintReport",
+       "lines": 27
+      }
+     ],
+     "type_ifs": 0
+    }
+   ],
+   "git": {
+    "available": true,
+    "commit": "98fee70",
+    "note": "saved your work in a commit: \"before change\"",
+    "log": "8bc8e64|2026-11-17 13:46:23 +0200|start\n82b4fbf|2026-11-17 16:17:20 +0200|Add models and gitignore\nd516a13|2026-11-17 17:13:15 +0200|level 1\n3a9854b|2026-11-17 17:20:49 +0200|level 3\ncbb529e|2026-11-17 17:22:43 +0200|before change\n98fee70|2026-11-17 17:23:56 +0200|before change",
+    "numstat": "commit|8bc8e64|start\n\n7\t0\t.gitignore\n55\t0\tapp/Program.cs\n11\t0\tapp/app.csproj\n449\t0\tcheck/run_checks.py\n8\t0\tdata/sample.txt\ncommit|82b4fbf|Add models and gitignore\n\n5\t0\tapp/.gitignore\n9\t0\tapp/Models/Enums.cs\n6\t0\tapp/Models/FineFile.cs\n35\t0\tapp/Models/HashalahFile.cs\ncommit|d516a13|level 1\n\n14\t0\tapp/Exception.cs\n2\t3\tapp/Models/Enums.cs\n15\t1\tapp/Models/FineFile.cs\n21\t11\tapp/Models/HashalahFile.cs\n3\t0\tapp/Program.cs\n65\t0\tapp/Services/CheckingFines.cs\n16\t0\tapp/Services/HashalahService.cs\n14\t0\tapp/Services/PrintResults.cs\ncommit|3a9854b|level 3\n\n1\t3\tapp/Program.cs\n40\t13\tapp/Services/CheckingFines.cs\n14\t0\tapp/Services/Pipeline.cs\n19\t1\tapp/Services/PrintResults.cs\ncommit|cbb529e|before change\n\n1\t1\tapp/Exception.cs\n3\t3\tapp/Services/HashalahService.cs\n186\t0\tresults_C.json\ncommit|98fee70|before change\n\n0\t186\tresults_C.json"
+   }
+  },
+  "uploads": [
+   {
+    "t": 1794928906701,
+    "created": "2026-11-17T17:21:26",
+    "commit": "3a9854b",
+    "warnings": [
+     "build_failed"
+    ],
+    "runs": []
+   },
+   {
+    "t": 1794929051930,
+    "created": "2026-11-17T17:23:56",
+    "commit": "98fee70",
+    "warnings": [],
+    "runs": [
+     {
+      "file": "check1a.txt",
+      "exit": 0,
+      "timed_out": false
+     },
+     {
+      "file": "check1b.txt",
+      "exit": 3762504530,
+      "timed_out": false
+     }
+    ]
+   }
+  ]
+ },
+ "d": {
+  "codeAfter": "",
+  "out2": "",
+  "via": "script",
+  "results": {
+   "kind": "placement-results",
+   "version": 1,
+   "mode": "D",
+   "lang": "csharp",
+   "created": "2026-11-17T17:26:49",
+   "created_epoch": 1794929209864,
+   "at": null,
+   "build": {
+    "ok": true,
+    "output": "Build succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.00",
+    "ms": 1200
+   },
+   "runs": [
+    {
+     "file": "check2.txt",
+     "exit": 3762504530,
+     "timed_out": false,
+     "ms": 2713,
+     "stdout": "",
+     "stderr_tail": "Unhandled exception. App.NotFoundInEnums: Unknown alumna in Type\n   at HashalahFile.Hashalah..ctor(String[] data) in C:\\Users\\8945\\Downloads\\exam\\app\\Models\\HashalahFile.cs:line 33\n   at HashalahService.EnteringDataIntoTheModel(Int32 reportDay, List`1 rows) in C:\\Users\\8945\\Downloads\\exam\\app\\Services\\HashalahService.cs:line 12\n   at Pipeline.Run(Int32 reportDay, List`1 rows) in C:\\Users\\8945\\Downloads\\exam\\app\\Services\\Pipeline.cs:line 7\n   at Program.Main(String[] args) in C:\\Users\\8945\\Downloads\\exam\\app\\Program.cs:line 19",
+     "decode_problem": false
+    }
+   ],
+   "sample_run": {
+    "file": "sample.txt",
+    "exit": 0,
+    "timed_out": false,
+    "ms": 51,
+    "stdout": "FINES\r\nreader_id,name,fine\r\n11,רחל כהן,0\r\n12,מרים לוי,30\r\n21,שרה גולד,0\r\n31,לאה רוזן,8\r\n13,דינה אבן,0\r\n11,רחל כהן,2\r\nFLAGGED\r\nreader_id,name\r\n21,שרה גולד\r\nERRORS\r\nTOTAL,40\r\n",
+    "stderr_tail": "skeleton ok: read sample.txt - report day 120 - 6 rows",
+    "decode_problem": false
+   },
+   "warnings": [
+    "no_run"
+   ],
+   "files": [
+    {
+     "path": "app/Exception.cs",
+     "lines": 14,
+     "classes": [
+      "NotFoundInEnums"
+     ],
+     "functions": [
+      {
+       "name": "NotFoundInEnums",
+       "lines": 2
+      }
+     ],
+     "type_ifs": 0
+    },
+    {
+     "path": "app/Models/Enums.cs",
+     "lines": 8,
+     "classes": [
+      "Type"
+     ],
+     "functions": [],
+     "type_ifs": 0
+    },
+    {
+     "path": "app/Models/FineFile.cs",
+     "lines": 20,
+     "classes": [
+      "FineFile",
+      "Fine"
+     ],
+     "functions": [],
+     "type_ifs": 0
+    },
+    {
+     "path": "app/Models/HashalahFile.cs",
+     "lines": 45,
+     "classes": [
+      "HashalahFile",
+      "Hashalah"
+     ],
+     "functions": [
+      {
+       "name": "Hashalah",
+       "lines": 22
+      },
+      {
+       "name": "HashalahFile",
+       "lines": 5
+      }
+     ],
+     "type_ifs": 3
+    },
+    {
+     "path": "app/Program.cs",
+     "lines": 56,
+     "classes": [
+      "Program"
+     ],
+     "functions": [
+      {
+       "name": "Main",
+       "lines": 13
+      },
+      {
+       "name": "ReadReportDay",
+       "lines": 4
+      },
+      {
+       "name": "ReadRows",
+       "lines": 12
+      },
+      {
+       "name": "FindSample",
+       "lines": 11
+      }
+     ],
+     "type_ifs": 0
+    },
+    {
+     "path": "app/Services/CheckingFines.cs",
+     "lines": 92,
+     "classes": [
+      "CheckingFines"
+     ],
+     "functions": [
+      {
+       "name": "Check",
+       "lines": 27
+      },
+      {
+       "name": "CalculateStudentFine",
+       "lines": 9
+      },
+      {
+       "name": "AddStudentFine",
+       "lines": 6
+      },
+      {
+       "name": "CheckTeacher",
+       "lines": 14
+      },
+      {
+       "name": "AddGuestFine",
+       "lines": 5
+      },
+      {
+       "name": "CalculateGuestFine",
+       "lines": 9
+      },
+      {
+       "name": "AddFineRecord",
+       "lines": 11
+      }
+     ],
+     "type_ifs": 0
+    },
+    {
+     "path": "app/Services/HashalahService.cs",
+     "lines": 16,
+     "classes": [
+      "HashalahService"
+     ],
+     "functions": [
+      {
+       "name": "EnteringDataIntoTheModel",
+       "lines": 10
+      }
+     ],
+     "type_ifs": 0
+    },
+    {
+     "path": "app/Services/Pipeline.cs",
+     "lines": 14,
+     "classes": [
+      "Pipeline"
+     ],
+     "functions": [
+      {
+       "name": "Run",
+       "lines": 9
+      }
+     ],
+     "type_ifs": 0
+    },
+    {
+     "path": "app/Services/PrintResults.cs",
+     "lines": 32,
+     "classes": [
+      "PrintResults"
+     ],
+     "functions": [
+      {
+       "name": "PrintReport",
+       "lines": 27
+      }
+     ],
+     "type_ifs": 0
+    }
+   ],
+   "git": {
+    "available": true,
+    "commit": "eece432",
+    "note": "nothing new to commit",
+    "log": "8bc8e64|2026-11-17 13:46:23 +0200|start\n82b4fbf|2026-11-17 16:17:20 +0200|Add models and gitignore\nd516a13|2026-11-17 17:13:15 +0200|level 1\n3a9854b|2026-11-17 17:20:49 +0200|level 3\ncbb529e|2026-11-17 17:22:43 +0200|before change\n98fee70|2026-11-17 17:23:56 +0200|before change\neece432|2026-11-17 17:26:31 +0200|change 1",
+    "numstat": "commit|8bc8e64|start\n\n7\t0\t.gitignore\n55\t0\tapp/Program.cs\n11\t0\tapp/app.csproj\n449\t0\tcheck/run_checks.py\n8\t0\tdata/sample.txt\ncommit|82b4fbf|Add models and gitignore\n\n5\t0\tapp/.gitignore\n9\t0\tapp/Models/Enums.cs\n6\t0\tapp/Models/FineFile.cs\n35\t0\tapp/Models/HashalahFile.cs\ncommit|d516a13|level 1\n\n14\t0\tapp/Exception.cs\n2\t3\tapp/Models/Enums.cs\n15\t1\tapp/Models/FineFile.cs\n21\t11\tapp/Models/HashalahFile.cs\n3\t0\tapp/Program.cs\n65\t0\tapp/Services/CheckingFines.cs\n16\t0\tapp/Services/HashalahService.cs\n14\t0\tapp/Services/PrintResults.cs\ncommit|3a9854b|level 3\n\n1\t3\tapp/Program.cs\n40\t13\tapp/Services/CheckingFines.cs\n14\t0\tapp/Services/Pipeline.cs\n19\t1\tapp/Services/PrintResults.cs\ncommit|cbb529e|before change\n\n1\t1\tapp/Exception.cs\n3\t3\tapp/Services/HashalahService.cs\n186\t0\tresults_C.json\ncommit|98fee70|before change\n\n0\t186\tresults_C.json\ncommit|eece432|change 1\n\n211\t0\tresults_C.json"
+   }
+  },
+  "uploads": [
+   {
+    "t": 1794929218837,
+    "created": "2026-11-17T17:26:49",
+    "commit": "eece432",
+    "warnings": [
+     "no_run"
+    ],
+    "runs": [
+     {
+      "file": "check2.txt",
+      "exit": 3762504530,
+      "timed_out": false
+     }
+    ]
+   },
+   {
+    "t": 1794929285041,
+    "created": "2026-11-17T17:26:49",
+    "commit": "eece432",
+    "warnings": [
+     "no_run"
+    ],
+    "runs": [
+     {
+      "file": "check2.txt",
+      "exit": 3762504530,
+      "timed_out": false
+     }
+    ]
+   }
+  ]
+ },
+ "e": {
+  "conf": {
+   "a": "4",
+   "b": "4",
+   "c": "4",
+   "d": "3"
+  },
+  "cleanLevel": "1",
+  "hardest": "הלחץ לסיים, ושאמרו להשתמש בAI אחרי שכבר תכננתי לכתוב פרויקט בנוי טוב",
+  "stuck": "לא הספקתי להיתקע",
+  "decision": "להשתמש בPIPELINE",
+  "million": "",
+  "gitLog": "8bc8e64|2026-11-17 13:46:23 +0200|start\n82b4fbf|2026-11-17 16:17:20 +0200|Add models and gitignore\nd516a13|2026-11-17 17:13:15 +0200|level 1\n3a9854b|2026-11-17 17:20:49 +0200|level 3\ncbb529e|2026-11-17 17:22:43 +0200|before change\n98fee70|2026-11-17 17:23:56 +0200|before change\neece432|2026-11-17 17:26:31 +0200|change 1",
+  "diag": {
+   "marks": {
+    "s1": {
+     "A": [
+      "LibraryReport"
+     ],
+     "B": [
+      "StudentPolicy"
+     ],
+     "C": [
+      "Student"
+     ]
+    },
+    "s2": {
+     "A": [
+      "LibraryReport"
+     ],
+     "B": [
+      "POLICIES"
+     ],
+     "C": [
+      "ReportBuilder"
+     ]
+    },
+    "s3": {
+     "A": [
+      "LibraryReport"
+     ],
+     "B": [
+      "POLICIES"
+     ],
+     "C": [
+      "ReportBuilder"
+     ]
+    }
+   },
+   "newc": {
+    "s1": {
+     "A": false,
+     "B": false,
+     "C": false
+    },
+    "s2": {
+     "A": false,
+     "B": true,
+     "C": true
+    },
+    "s3": {
+     "A": false,
+     "B": false,
+     "C": false
+    }
+   },
+   "choice": "C",
+   "reason": "r3",
+   "move": {
+    "method": "printLine",
+    "to": "ReportBuilder",
+    "t": 1794929912762
+   },
+   "own": "C"
+  }
+ },
+ "integrity": "d4f10e01"
+}
